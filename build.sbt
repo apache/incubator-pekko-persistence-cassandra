@@ -33,7 +33,7 @@ dumpSchema := (core / Test / runMain).toTask(" org.apache.pekko.persistence.cass
 
 lazy val core = project
   .in(file("core"))
-  .enablePlugins(Common, AutomateHeaderPlugin, MultiJvmPlugin)
+  .enablePlugins(Common, AutomateHeaderPlugin, ReproducibleBuildsPlugin, MultiJvmPlugin)
   .dependsOn(cassandraLauncher % Test)
   .settings(
     name := "pekko-persistence-cassandra",
@@ -44,7 +44,7 @@ lazy val core = project
 
 lazy val cassandraLauncher = project
   .in(file("cassandra-launcher"))
-  .enablePlugins(Common)
+  .enablePlugins(Common, ReproducibleBuildsPlugin)
   .settings(
     name := "pekko-persistence-cassandra-launcher",
     Compile / managedResourceDirectories += (cassandraBundle / target).value / "bundle",
@@ -54,7 +54,7 @@ lazy val cassandraLauncher = project
 // resources
 lazy val cassandraBundle = project
   .in(file("cassandra-bundle"))
-  .enablePlugins(Common, AutomateHeaderPlugin)
+  .enablePlugins(Common, AutomateHeaderPlugin, ReproducibleBuildsPlugin)
   .settings(
     name := "pekko-persistence-cassandra-bundle",
     crossPaths := false,
