@@ -45,7 +45,7 @@ lazy val core = project
 
 lazy val cassandraLauncher = project
   .in(file("cassandra-launcher"))
-  .enablePlugins(Common, ReproducibleBuildsPlugin)
+  .enablePlugins(Common)
   .settings(
     name := "pekko-persistence-cassandra-launcher",
     Compile / managedResourceDirectories += (cassandraBundle / target).value / "bundle",
@@ -55,7 +55,7 @@ lazy val cassandraLauncher = project
 // resources
 lazy val cassandraBundle = project
   .in(file("cassandra-bundle"))
-  .enablePlugins(Common, AutomateHeaderPlugin, ReproducibleBuildsPlugin)
+  .enablePlugins(Common, AutomateHeaderPlugin)
   .settings(
     name := "pekko-persistence-cassandra-bundle",
     crossPaths := false,
