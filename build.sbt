@@ -36,7 +36,7 @@ dumpSchema := (core / Test / runMain).toTask(" org.apache.pekko.persistence.cass
 
 lazy val core = project
   .in(file("core"))
-  .enablePlugins(Common, AutomateHeaderPlugin, MultiJvmPlugin)
+  .enablePlugins(Common, AutomateHeaderPlugin, ReproducibleBuildsPlugin, MultiJvmPlugin)
   .dependsOn(cassandraLauncher % Test)
   .settings(
     name := "pekko-persistence-cassandra",
